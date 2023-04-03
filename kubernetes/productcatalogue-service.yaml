@@ -6,7 +6,7 @@ metadata:
   labels:
     app: productcatalogue
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: productcatalogue
   ports:
@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
       - name: productcatalogue
-        image: thetips4you/productcatalogue:latest
+        image: sunnyb636/productcatalogue:latest
         ports:
         - containerPort: 8020
         livenessProbe:

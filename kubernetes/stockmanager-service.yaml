@@ -6,7 +6,7 @@ metadata:
   labels:
     app: stockmanager
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: stockmanager
   ports:
@@ -20,7 +20,6 @@ kind: Deployment
 metadata:
   name: stockmanager
 spec:
-  spec:
   selector:
     matchLabels:
       app: stockmanager
@@ -32,12 +31,6 @@ spec:
     spec:
       containers:
       - name: stockmanager
-        image: thetips4you/stockmanager:latest
+        image: sunnyb636/stockmanager:latest
         ports:
         - containerPort: 8030
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8030
-          initialDelaySeconds: 30
-          timeoutSeconds: 1
